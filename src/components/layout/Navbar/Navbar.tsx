@@ -9,35 +9,34 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
+import { Menu, ChevronDown, X } from "lucide-react"
 import { dropdownData } from './data'
 import { ListItem } from './DropdownMenu'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
 const Navbar = () => {
   return (
-    <div className="w-full bg-white/80 backdrop-blur-md z-50 fixed top-0">
+    <div className="w-full bg-white z-50 fixed top-0">
       <div className="w-full max-w-[1600px] mx-auto px-6">
         <nav className="flex items-center justify-between h-[72px]">
+          {/* Logo - visible on all screens */}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/assets/navbar/logo.svg"
+                alt="Droip Logo"
+                width={64}
+                height={26}
+                priority
+              />
+            </Link>
+          </div>
 
-          {/* Left section with logo */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-20">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/assets/navbar/logo.svg"
-                  alt="Droip Logo"
-                  width={64}
-                  height={26}
-                  priority
-                />
-              </Link>
-            </div>
-
-
             <NavigationMenu>
               <NavigationMenuList className="gap-2">
                 <NavigationMenuItem>
@@ -52,8 +51,8 @@ const Navbar = () => {
                   <NavigationMenuTrigger className="text-base font-medium text-gray-600">
                     Product
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="animate-in slide-in-from-top-2 duration-300 ease-out">
-                    <div className="grid w-[600px] gap-3 p-4 md:grid-cols-2">
+                  <NavigationMenuContent className="animate-in slide-in-from-top-2 duration-300 ease-out border-none">
+                    <div className="grid w-[600px] grid-cols-2 gap-2 p-2">
                       {dropdownData.product.items.map((item) => (
                         <ListItem
                           key={item.title}
@@ -71,8 +70,8 @@ const Navbar = () => {
                   <NavigationMenuTrigger className="text-base font-medium text-gray-600">
                     Resources
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="animate-in slide-in-from-top-2 duration-300 ease-out">
-                    <div className="w-[300px] p-4">
+                  <NavigationMenuContent className="animate-in slide-in-from-top-2 duration-300 ease-out border-none">
+                    <div className="grid w-[600px] grid-cols-2 gap-2 p-2">
                       {dropdownData.resources.items.map((item) => (
                         <ListItem
                           key={item.title}
@@ -90,8 +89,8 @@ const Navbar = () => {
                   <NavigationMenuTrigger className="text-base font-medium text-gray-600">
                     Support
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="animate-in slide-in-from-top-2 duration-300 ease-out">
-                    <div className="w-[300px] p-4">
+                  <NavigationMenuContent className="animate-in slide-in-from-top-2 duration-300 ease-out border-none">
+                    <div className="grid w-[600px] grid-cols-2 gap-2 p-2">
                       {dropdownData.support.items.map((item) => (
                         <ListItem
                           key={item.title}
@@ -116,7 +115,7 @@ const Navbar = () => {
             </NavigationMenu>
           </div>
 
-          {/* Right section with auth buttons */}
+          {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Button variant="ghost" asChild className="text-base font-medium text-gray-600">
               <Link href="/login">Login</Link>
@@ -126,24 +125,74 @@ const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile menu */}
+          {/* Mobile menu trigger */}
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
-              <div className="flex flex-col space-y-4 mt-8">
-                <Link href="/" className="text-lg font-medium">Home</Link>
-                <Link href="/product" className="text-lg font-medium">Product</Link>
-                <Link href="/resources" className="text-lg font-medium">Resources</Link>
-                <Link href="/support" className="text-lg font-medium">Support</Link>
-                <Link href="/pricing" className="text-lg font-medium">Pricing</Link>
-                <Link href="/login" className="text-lg font-medium">Login</Link>
-                <Button asChild className="bg-[#5641F3] hover:bg-[#4634D9] text-white">
-                  <Link href="/get-started">Get Started</Link>
-                </Button>
+            <SheetContent
+              side="top"
+              className="w-full mt-[72px] bg-white border-t h-[calc(100vh-72px)]"
+            >
+              <div className="flex flex-col p-6 h-full overflow-y-auto">
+                <div className="space-y-6">
+                  <Link
+                    href="/"
+                    className="block text-lg text-gray-900 border-b border-gray-100 pb-4"
+                  >
+                    Home
+                  </Link>
+
+                  <Collapsible className="border-b border-gray-100 pb-4">
+                    <CollapsibleTrigger className="flex items-center justify-between w-full">
+                      <span className="text-lg text-gray-900">Product</span>
+                      <ChevronDown className="h-5 w-5 text-gray-500 transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-180" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="space-y-4 pl-4 mt-4 transition-all duration-300 ease-in-out">
+                      {dropdownData.product.items.map((item) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          className="flex items-center gap-3 text-gray-600"
+                        >
+                          <div className="w-6 h-6 flex items-center justify-center bg-primary/10 rounded">
+                            <Image
+                              src={item.icon}
+                              alt={item.title}
+                              width={16}
+                              height={16}
+                              className="text-primary"
+                            />
+                          </div>
+                          <span>{item.title}</span>
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  <Link
+                    href="/resources"
+                    className="block text-lg text-gray-900 border-b border-gray-100 pb-4"
+                  >
+                    Resources
+                  </Link>
+
+                  <Link
+                    href="/support"
+                    className="block text-lg text-gray-900 border-b border-gray-100 pb-4"
+                  >
+                    Support
+                  </Link>
+
+                  <Link
+                    href="/pricing"
+                    className="block text-lg text-gray-900 border-b border-gray-100 pb-4"
+                  >
+                    Pricing
+                  </Link>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
@@ -154,6 +203,11 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
+
+
+
 
 
 

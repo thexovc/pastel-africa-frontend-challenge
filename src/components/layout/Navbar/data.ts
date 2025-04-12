@@ -5,70 +5,70 @@ export const dropdownData: Record<string, DropdownData> = {
     type: "product",
     items: [
       {
-        icon: "📝",
+        icon: "/assets/navbar/icon.svg",
         title: "Editor",
         description: "Effective Visual Builder",
-        href: "/product/editor"
+        href: "/product/editor",
       },
       {
-        icon: "📊",
+        icon: "/assets/navbar/icon.svg",
         title: "Grids & Layouts",
         description: "Structure more easily",
-        href: "/product/grids-and-layouts"
+        href: "/product/grids-and-layouts",
       },
       {
-        icon: "Aa",
+        icon: "/assets/navbar/icon.svg",
         title: "Typography",
         description: "Customize your branding",
-        href: "/product/typography"
+        href: "/product/typography",
       },
       {
-        icon: "📋",
+        icon: "/assets/navbar/icon.svg",
         title: "Form Builder",
         description: "Design any web forms",
-        href: "/product/form-builder"
+        href: "/product/form-builder",
       },
       {
-        icon: "💫",
+        icon: "/assets/navbar/icon.svg",
         title: "Pop-up Builder",
         description: "Build pop-ups visually",
-        href: "/product/pop-up-builder"
+        href: "/product/pop-up-builder",
       },
       {
-        icon: "📁",
+        icon: "/assets/navbar/icon.svg",
         title: "Content Manager",
         description: "Centralized dynamic content management",
-        href: "/product/content-manager"
+        href: "/product/content-manager",
       },
       {
-        icon: "🎯",
+        icon: "/assets/navbar/icon.svg",
         title: "Interaction & Animation",
         description: "Design interactive websites",
-        href: "/product/interaction-and-animation"
+        href: "/product/interaction-and-animation",
       },
       {
-        icon: "🖼️",
+        icon: "/assets/navbar/icon.svg",
         title: "Media Manager",
         description: "Manage & edit site assets",
-        href: "/product/media-manager"
+        href: "/product/media-manager",
       },
       {
-        icon: "🔍",
+        icon: "/assets/navbar/icon.svg",
         title: "SEO",
         description: "Optimize your SEO workflow",
-        href: "/product/seo"
+        href: "/product/seo",
       },
       {
-        icon: "♿",
+        icon: "/assets/navbar/icon.svg",
         title: "Accessibility",
         description: "Accessible to everyone",
-        href: "/product/accessibility"
+        href: "/product/accessibility",
       },
       {
-        icon: "🎨",
+        icon: "/assets/navbar/icon.svg",
         title: "Figma to Droip",
         description: "Turn static design into live websites",
-        href: "/product/figma-to-droip"
+        href: "/product/figma-to-droip",
       },
     ],
   },
@@ -76,22 +76,22 @@ export const dropdownData: Record<string, DropdownData> = {
     type: "resources",
     items: [
       {
-        icon: "📚",
+        icon: "/assets/navbar/icon.svg",
         title: "Droip Blogs",
         description: "Explore what's happening",
-        href: "/resources/droip-blogs"
+        href: "/resources/droip-blogs",
       },
       {
-        icon: "📄",
+        icon: "/assets/navbar/icon.svg",
         title: "Documentation",
         description: "Learn from documentation",
-        href: "/resources/documentation"
+        href: "/resources/documentation",
       },
       {
-        icon: "🔄",
+        icon: "/assets/navbar/icon.svg",
         title: "Release Notes",
         description: "Check what's new",
-        href: "/resources/release-notes"
+        href: "/resources/release-notes",
       },
     ],
   },
@@ -99,22 +99,22 @@ export const dropdownData: Record<string, DropdownData> = {
     type: "support",
     items: [
       {
-        icon: "💬",
+        icon: "/assets/navbar/icon.svg",
         title: "Get Support",
         description: "Fix your issues with our experts",
-        href: "/support/get-support"
+        href: "/support/get-support",
       },
       {
-        icon: "✨",
+        icon: "/assets/navbar/icon.svg",
         title: "Feature Request",
         description: "Let us know what's missing",
-        href: "/support/feature-request"
+        href: "/support/feature-request",
       },
       {
-        icon: "📞",
+        icon: "/assets/navbar/icon.svg",
         title: "Contact",
         description: "Contact for query",
-        href: "/support/contact"
+        href: "/support/contact",
       },
     ],
   },
