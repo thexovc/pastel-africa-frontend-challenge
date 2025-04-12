@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Navbar from './Navbar/Navbar';
+import { Container } from './Container';
 
 interface LayoutProps {
   children: ReactNode;
@@ -7,11 +8,16 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen">
+    <>
       <Navbar />
-      <main className="pt-16">{children}</main>
-    </div>
+      <div className="min-h-screen w-full">
+        <Container>
+          <main className="pt-[72px] w-full">{children}</main>
+        </Container>
+      </div>
+    </>
   );
 };
 
 export default Layout;
+
