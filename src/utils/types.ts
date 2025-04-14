@@ -3,5 +3,5 @@ type Feature = {
     title: string
     description: string
     image: string
-    view?: Boolean
+    viewDetails?: Boolean
   }

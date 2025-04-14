@@ -18,7 +18,6 @@ export default function Home() {
         subtitle="immersive interactions"
         features={CraftfeaturesData}
         imagePosition="left"
-        className="bg-gray-50" // Optional additional classes
       />
     </main>
   )

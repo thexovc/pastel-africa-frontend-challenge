@@ -141,9 +141,9 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X size={55} className="text-primary" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu size={55} className="text-primary" />
             )}
           </Button>
         </nav>

@@ -4,14 +4,12 @@ export const CraftfeaturesData: Feature[] = [
       title: "Advanced interaction timeline",
       description: "Design smooth, multi-step animations with a timeline-based editor for complete control.",
       image: "/assets/features/advanced-Interaction-timeline.webp",
-      view: true
     },
     {
       id: 2,
       title: "Custom timing editor",
       description: "Fine-tune every interaction to deliver flawless performance by adjusting delays, durations, easing functions, and more.",
       image: "/assets/features/custom-timing-editor.webp",
-      view: true
     },
     {
       id: 3,
