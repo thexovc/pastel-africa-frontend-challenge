@@ -183,5 +183,9 @@
       transform: translateY(0) scaleY(1);
     }
   }
+  
 }
 
+.perspective-2000 {
+  perspective: 2000px;
+}
