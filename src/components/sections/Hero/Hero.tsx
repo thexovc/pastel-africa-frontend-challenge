@@ -5,7 +5,7 @@ import { ChevronRight, PlayCircle } from 'lucide-react'
 
 const Hero = () => {
   return (
-    <section className="w-full pt-20 pb-10 md:pb-20 bg-white">
+    <section className="w-full pt-20 pb-10 md:pb-20">
       <div className="w-full max-w-[1600px] mx-auto">
         <div className="flex flex-col gap-6 md:gap-10">
           {/* Tag */}

@@ -4,14 +4,6 @@ import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import Image from 'next/image'
 
-type Feature = {
-  id: number
-  title: string
-  description: string
-  image: string
-  viewDetails?: boolean
-}
-
 type FeaturesProps = {
   title: string
   subtitle?: string
@@ -62,7 +54,7 @@ const Features = ({
   const imageOrder = imagePosition === 'left' ? 'lg:order-1' : 'lg:order-2';
 
   return (
-    <section className={`w-full py-12 sm:py-20 bg-white ${className}`}>
+    <section className={`w-full py-12 sm:py-20 ${className}`}>
       <div className="w-full max-w-[1600px] mx-auto">
         <div className="flex flex-col gap-12 sm:gap-16">
           {/* Heading with text reveal animation */}
