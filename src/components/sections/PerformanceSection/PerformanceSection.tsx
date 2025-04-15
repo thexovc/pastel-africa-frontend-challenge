@@ -10,7 +10,7 @@ const PerformanceSection: React.FC = () => {
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            const rect = e?.currentTarget?.getBoundingClientRect();
+            const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
             setMousePosition({
                 x: e.clientX - rect.left,
                 y: e.clientY - rect.top

@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full bg-white/90 z-50 fixed top-0">
+    <div className="w-full bg-white z-50 fixed top-0">
       <div className="w-full max-w-[1600px] mx-auto px-6">
         <nav className="flex items-center justify-between h-[72px]">
 
@@ -48,7 +48,7 @@ const Navbar = () => {
                 <NavigationMenuList className="gap-2">
                   <NavigationMenuItem>
                     <Link href="/" passHref>
-                      <NavigationMenuLink className="text-base font-semibold text-gray-700 hover:text-black hover:font-semibold">
+                      <NavigationMenuLink className="text-base bg-none font-semibold text-gray-700 hover:text-black hover:font-semibold">
                         Home
                       </NavigationMenuLink>
                     </Link>
@@ -74,7 +74,7 @@ const Navbar = () => {
                   </NavigationMenuItem>
 
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-base font-medium text-gray-700 hover:font-semibold">
+                    <NavigationMenuTrigger className="text-base bg-none font-medium text-gray-700 hover:font-semibold">
                       Resources
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="animate-in slide-in-from-top-2 duration-300 ease-out border-none">
@@ -93,7 +93,7 @@ const Navbar = () => {
                   </NavigationMenuItem>
 
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-base font-medium text-gray-700 hover:font-semibold">
+                    <NavigationMenuTrigger className="text-base bg-none font-medium text-gray-700 hover:font-semibold">
                       Support
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="animate-in slide-in-from-top-2 duration-300 ease-out border-none">
@@ -113,7 +113,7 @@ const Navbar = () => {
 
                   <NavigationMenuItem>
                     <Link href="/pricing" passHref>
-                      <NavigationMenuLink className="text-base font-medium text-gray-700 hover:text-black hover:font-semibold">
+                      <NavigationMenuLink className="text-base bg-none font-medium text-gray-700 hover:text-black hover:font-semibold">
                         Pricing
                       </NavigationMenuLink>
                     </Link>
@@ -124,7 +124,7 @@ const Navbar = () => {
 
             {/* Desktop Auth Buttons */}
             <div className="flex items-center gap-4">
-              <Button variant="ghost" asChild className="text-base font-medium text-gray-700 hover:text-black hover:font-semibold">
+              <Button variant="ghost" asChild className="text-base bg-none font-medium text-gray-700 hover:text-black hover:font-semibold">
                 <Link href="/login">Login</Link>
               </Button>
               <Button asChild className="bg-primary/90 hover:bg-primary hover:py-6 text-white rounded-xl text-sm font-semibold px-4 py-2">
