@@ -55,8 +55,8 @@ const PerformanceSection: React.FC = () => {
             <div className="container mx-auto px-4 max-w-[1600px] relative z-10">
                 {/* Heading */}
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white w-5/6 sm:max-w-sm mx-auto">
-                        Performance that sets you apart
+                    <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold text-white mx-auto">
+                        Performance that <br /> sets you apart
                     </h2>
                 </div>
 
