@@ -1,0 +1,11 @@
+<svg class="app-icon" data-droip="dp9kmar0" xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49" fill="none" style="animation-name: none; will-change: transform; transition-property: transform; transition-duration: 400ms; transition-timing-function: ease; transform-style: preserve-3d; transform: scaleX(1) scaleY(1);">
+    <g clip-path="url(#clip0_946_18698)">
+        <rect y="0.5" width="48" height="48" fill="#1292EE"></rect>
+        <path d="M11.2434 27.5668L21.7768 17.0334C23.1422 15.6896 23.9875 13.804 23.9875 11.745C23.9875 9.70771 23.1639 7.84377 21.8418 6.5L11.3084 17.0334C9.94293 18.3772 9.09766 20.2628 9.09766 22.3218C9.09766 24.3808 9.92126 26.2231 11.2434 27.5668ZM36.7533 21.4115L26.2199 31.9449C24.8544 33.2887 24.0092 35.1743 24.0092 37.2333C24.0092 39.2706 24.8328 41.1346 26.1549 42.4783L36.6883 31.9449C38.0537 30.6011 38.899 28.7155 38.899 26.6565C38.899 24.5975 38.0754 22.7553 36.7533 21.4115ZM36.6883 17.0551C38.0537 15.7113 38.899 13.8257 38.899 11.7667C38.899 9.72938 38.0754 7.86544 36.7533 6.52167L11.3084 31.9449C9.94293 33.3104 9.09766 35.1743 9.09766 37.255C9.09766 39.2923 9.92126 41.1562 11.2434 42.5L36.6883 17.0551Z" fill="white"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_946_18698">
+            <rect y="0.5" width="48" height="48" rx="12" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>

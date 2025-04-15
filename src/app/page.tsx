@@ -1,3 +1,4 @@
+import AppIntegration from '@/components/sections/AppIntegration/AppIntegration'
 import Design from '@/components/sections/Design/Design'
 import Features from '@/components/sections/Features/Features'
 import Hero from '@/components/sections/Hero/Hero'
@@ -21,6 +22,7 @@ export default function Home() {
         imagePosition="left"
       />
 
+      <AppIntegration />
       <Design />
     </main>
   )

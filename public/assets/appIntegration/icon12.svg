@@ -1,0 +1,12 @@
+<svg class="app-icon" data-droip="dpqjwekj" xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49" fill="none" style="animation-name: none; will-change: transform; transition-property: transform; transition-duration: 400ms; transition-timing-function: ease; transform-style: preserve-3d; transform: scaleX(1) scaleY(1);">
+    <g clip-path="url(#clip0_1266_25484)">
+        <rect y="0.5" width="48" height="48" fill="white"></rect>
+        <path d="M42 33.8288C42 34.6918 41.3014 35.3493 40.4795 35.3493H7.52055C6.65753 35.3493 6 34.6507 6 33.8288V14.0205C6 13.1575 6.69863 12.5 7.52055 12.5H40.4384C41.3014 12.5 41.9589 13.1986 41.9589 14.0205V33.8288H42Z" fill="#00ABE9"></path>
+        <path d="M41.6303 13.0352C37.3975 19.6927 30.781 25.7338 23.9591 25.6105C21.4523 25.5694 18.5756 24.8297 16.1509 22.8571C14.3427 21.3776 12.5345 19.0763 11.8358 15.7886C11.5482 15.7886 11.3427 15.7886 11.0961 15.7886C9.98651 15.7886 9.32898 16.7749 9.45227 17.679C9.49336 17.8845 9.53446 18.131 9.57555 18.3776C10.1098 21.5831 12.0002 25.1995 15.1646 27.542C17.6303 29.3502 20.6714 30.542 24.0002 30.542C30.0002 30.542 36.4112 26.7201 42.0002 16.8982V14.0215C42.0002 13.6516 41.8769 13.3228 41.6303 13.0352Z" fill="white"></path>
+    </g>
+    <defs>
+        <clipPath id="clip0_1266_25484">
+            <rect y="0.5" width="48" height="48" rx="12" fill="white"></rect>
+        </clipPath>
+    </defs>
+</svg>
