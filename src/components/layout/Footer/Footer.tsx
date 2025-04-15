@@ -193,31 +193,67 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="mt-12 pt-8 border-t-4 border-gray-300">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-lg text-gray-500">
-                            © 2025 Droip. All rights reserved
-                        </p>
-                        <div className="flex items-center gap-2">
+                <div className="border-t-4 border-gray-300 py-4 mt-10">
+                    <div className="container mx-auto px-4">
+                        {/* Desktop layout - row */}
+                        <div className="hidden md:flex flex-row justify-between items-center">
+                            <p className="text-sm text-gray-500">
+                                © 2025 Droip. All rights reserved
+                            </p>
+
+                            <div className="flex items-center">
+                                <span className="text-sm text-gray-500 mr-2">A Product by</span>
+                                <Image
+                                    src="/assets/footer/themeum.svg"
+                                    alt="Themeum"
+                                    width={80}
+                                    height={80}
+                                    className="mr-1"
+                                />
+                            </div>
+
+                            <div className="flex items-center">
+                                <div className="flex items-center ml-4 bg-[#9353FF] rounded gap-1 pl-1 p-0.5">
+                                    <Image
+                                        src="/assets/footer/droip.svg"
+                                        alt="Droip"
+                                        width={10}
+                                        height={10}
+                                    />
+                                    <span className="text-xs p-1 rounded text-[#551A8B] font-medium bg-white">Made in Droip</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Mobile layout - column */}
+                        <div className="flex md:hidden flex-col items-start md:items-center space-y-4">
+                            {/* Themeum logo group */}
                             <div className="flex items-center">
                                 <Image
-                                    src="/assets/themeum-logo.svg"
+                                    src="/assets/footer/themeum.svg"
                                     alt="Themeum"
-                                    width={24}
-                                    height={24}
-                                    className="mr-2"
+                                    width={80}
+                                    height={80}
+                                    className="mr-1"
                                 />
-                                <span className="text-lg text-gray-500">A Product by</span>
+                                <span className="text-sm text-gray-500 ml-2">A Product by</span>
                             </div>
-                            <div className="flex items-center gap-2 ml-4 px-3 py-1 bg-purple-50 rounded-full">
+
+                            {/* Made in Droip badge */}
+                            <div className="bg-[#9353FF] rounded gap-1 pl-1 p-0.5 flex items-center">
                                 <Image
-                                    src="/assets/droip-icon.svg"
+                                    src="/assets/footer/droip.svg"
                                     alt="Droip"
-                                    width={16}
-                                    height={16}
+                                    width={10}
+                                    height={10}
                                 />
-                                <span className="text-lg text-purple-600">Made in Droip</span>
+                                <span className="text-xs p-1 rounded text-[#551A8B] font-medium bg-white">Made in Droip</span>
                             </div>
+
+                            {/* Copyright text */}
+                            <p className="text-sm text-gray-500">
+                                © 2025 Droip. All rights reserved
+                            </p>
                         </div>
                     </div>
                 </div>
