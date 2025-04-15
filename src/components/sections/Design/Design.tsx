@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import AnimateHeader from "../../shared/AnimatedHeader";
-import { ArrowRight, ChevronRight, MoveRight } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 
 type Feature = {
     title: string;
@@ -121,32 +121,6 @@ const features: Feature[] = [
     }
 ];
 
-// const AnimateHeader: React.FC<AnimateHeaderProps> = ({ title, content, isShort = false }) => {
-//     return (
-//         <div className="max-w-5xl mb-32">
-//             {React.isValidElement(title) ? (
-//                 title
-//             ) : (
-//                 <h1 className="text-6xl md:text-8xl font-medium tracking-tight mb-8 leading-[1.1]">
-//                     {title}
-//                 </h1>
-//             )}
-//             <div className="flex items-center gap-3">
-//                 <p className="text-xl md:text-2xl text-gray-600">
-//                     {content}
-//                     {isShort && (
-//                         <>
-//                             <span className="font-semibold text-black"> most advanced</span>{' '}
-//                             granular controls
-//                         </>
-//                     )}
-//                 </p>
-//                 <div className="w-2.5 h-2.5 rounded-full bg-[#5641F3]" />
-//             </div>
-//         </div>
-//     );
-// };
-
 const Design: React.FC = () => {
     // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     // const [isHovering, setIsHovering] = useState(false);
@@ -170,18 +144,7 @@ const Design: React.FC = () => {
     return (
         <section className="w-full">
             <div className="w-full max-w-[1600px] mx-auto pt-32 pb-20">
-                {/* Hero Section */}
-                {/* <AnimateHeader
-                    title={
-                        <h1 className="text-6xl md:text-8xl font-medium tracking-tight mb-8 leading-[1.1]">
-                            Design and
-                            <br />
-                            build everything
-                        </h1>
-                    }
-                    content="more efficiently with the"
-                    isShort={true}
-                /> */}
+
                 <AnimateHeader
                     title={
                         <h2 className="text-black text-5xl xl:text-6xl 2xl:text-8xl leading-[1.1em] 2xl:tracking-[-5px] font-medium">
@@ -281,14 +244,12 @@ const Design: React.FC = () => {
                 {/* CTA Section */}
                 <div
                     ref={ctaRef}
-                    className="mt-32 rounded-3xl overflow-hidden relative cursor-pointer"
+                    className="mt-32 rounded-2xl overflow-hidden relative cursor-pointer"
                     onMouseMove={handleMouseMove}
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
                 >
-                    {/* Base gradient background */}
-                    <div className="absolute inset-0 bg-black" />
-
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#331e7c] to-black"></div>
                     {/* Mouse following gradient - always present using the last mouse position */}
                     <div
                         className="absolute pointer-events-none"
@@ -306,10 +267,10 @@ const Design: React.FC = () => {
                         }}
                     />
 
-                    <div className="grid md:grid-cols-[2fr_1fr] relative z-10">
+                    <div className="grid sm:grid-cols-[1fr_1fr]  xl:grid-cols-[2fr_1fr] relative z-10">
                         {/* Left side */}
-                        <div className="p-8 md:p-20">
-                            <h2 className="text-4xl md:text-7xl text-white font-medium leading-[1.1]">
+                        <div className="p-8 md:px-20 md:py-5 flex items-center">
+                            <h2 className="text-3xl sm:text-5xl xl:text-6xl text-white font-medium leading-[1.1]">
                                 Get Started
                                 <br />
                                 For Free
@@ -317,22 +278,21 @@ const Design: React.FC = () => {
                         </div>
 
                         {/* Right side */}
-                        <div className="px-8 pb-8 md:p-16 flex flex-col justify-between">
+                        <div className="px-8 pb-8 sm:p-8 xl:p-16 flex flex-col justify-between">
                             <p className="text-white text-sm sm:text-lg md:text-base leading-relaxed mb-8">
                                 Experience the power of Droip no-code website builder, risk-free. Create stunning, responsive sites with pure creative freedom.
                             </p>
 
-                            {/* Button with its own group context for hover */}
-                            <button className="group/btn bg-[#5641F3] flex items-center justify-center text-xl text-white px-4 sm:px-8 py-2 sm:py-4 rounded-2xl sm:rounded-3xl hover:bg-[#4634E6] transition-all duration-300 gap-2 font-medium transform hover:scale-105">
+                            <button className="group/btn bg-[#5641F3] flex items-center justify-center text-lg xl:text-xl text-white px-4 sm:px-8 py-2 xl:py-4 rounded-2xl sm:rounded-3xl hover:bg-[#4634E6] transition-all duration-300 gap-2 font-medium transform hover:scale-105">
                                 Try for Free
                                 <span className="relative w-6 h-6 flex items-center justify-center">
-                                    {/* Default: ChevronRight (arrow without line) */}
+
                                     <ChevronRight
                                         size={24}
                                         className="absolute transition-all duration-300 transform group-hover/btn:opacity-0 group-hover/btn:translate-y-1"
                                     />
 
-                                    {/* Hover: ArrowRight (arrow with line) */}
+
                                     <ArrowRight
                                         size={24}
                                         className="absolute transition-all duration-300 opacity-0 transform -translate-y-1 group-hover/btn:opacity-100 group-hover/btn:translate-y-0"
