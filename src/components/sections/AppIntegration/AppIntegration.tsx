@@ -10,7 +10,7 @@ const AppIntegration = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
-        <div className="relative flex items-center justify-center py-20 xl:py-30 bg-bg-primary">
+        <div className="relative flex items-center justify-center py-20">
             <div className="w-full flex flex-col">
                 <AnimateHeader
                     title={
