@@ -3,6 +3,7 @@ import Design from '@/components/sections/Design/Design'
 import Features from '@/components/sections/Features/Features'
 import Hero from '@/components/sections/Hero/Hero'
 import PerformanceSection from '@/components/sections/PerformanceSection/PerformanceSection'
+import SwipesSection from '@/components/sections/PixelPerfect/SwipesSection'
 import ThirdPartyDependencies from '@/components/sections/ThirdPartyDependencies/ThirdPartyDependencies'
 import { CraftfeaturesData } from '@/utils/data/craft-feature.data'
 import { DesignfeaturesData } from '@/utils/data/design-feature.data'
@@ -24,8 +25,15 @@ export default function Home() {
           features={CraftfeaturesData}
           imagePosition="left"
         />
+
+      </div>
+
+      <SwipesSection />
+
+      <div className='mx-auto max-w-[1600px] px-6 '>
+
         <ThirdPartyDependencies />
-      </div>'
+      </div>
 
       <PerformanceSection />
 

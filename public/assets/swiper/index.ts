@@ -1,6 +1,6 @@
 import swipe1_1 from "./swipe1_1.webp";
 import swipe1_2 from "./swipe1_2.webp";
-import swipe1_3 from "./swipe1_2.webp";
+import swipe1_3 from "./swipe1_3.webp";
 import swipe1_4 from "./swipe1_4.webp";
 
 import swipe2_1 from "./swipe2_1.webp";
