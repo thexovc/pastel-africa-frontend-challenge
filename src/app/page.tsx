@@ -2,7 +2,6 @@ import AppIntegration from '@/components/sections/AppIntegration/AppIntegration'
 import Design from '@/components/sections/Design/Design'
 import Features from '@/components/sections/Features/Features'
 import Hero from '@/components/sections/Hero/Hero'
-import ThirdPartyDependencies from '@/components/sections/ThirdPartyDependencies/ThirdPartyDependencies'
 import { CraftfeaturesData } from '@/utils/data/craft-feature.data'
 import { DesignfeaturesData } from '@/utils/data/design-feature.data'
 
@@ -23,7 +22,6 @@ export default function Home() {
         imagePosition="left"
       />
 
-      <ThirdPartyDependencies />
       <AppIntegration />
       <Design />
     </main>
