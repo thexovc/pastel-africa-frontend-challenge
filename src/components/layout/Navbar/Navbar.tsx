@@ -46,13 +46,13 @@ const Navbar = () => {
             <div className="flex items-center ml-20">
               <NavigationMenu>
                 <NavigationMenuList className="gap-2">
+
                   <NavigationMenuItem>
-                    <Link href="/" passHref>
-                      <NavigationMenuLink className="text-base bg-none font-semibold text-gray-700 hover:text-black hover:font-semibold">
-                        Home
-                      </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuLink href='/' className="text-base bg-none font-semibold text-gray-700 hover:text-black hover:font-semibold">
+                      Home
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
+
 
                   <NavigationMenuItem>
                     <NavigationMenuTrigger className="text-base font-medium text-gray-700 hover:font-semibold">
@@ -112,11 +112,11 @@ const Navbar = () => {
                   </NavigationMenuItem>
 
                   <NavigationMenuItem>
-                    <Link href="/pricing" passHref>
-                      <NavigationMenuLink className="text-base bg-none font-medium text-gray-700 hover:text-black hover:font-semibold">
-                        Pricing
-                      </NavigationMenuLink>
-                    </Link>
+
+                    <NavigationMenuLink href='/' className="text-base bg-none font-medium text-gray-700 hover:text-black hover:font-semibold">
+                      Pricing
+                    </NavigationMenuLink>
+
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
@@ -125,10 +125,10 @@ const Navbar = () => {
             {/* Desktop Auth Buttons */}
             <div className="flex items-center gap-4">
               <Button variant="ghost" asChild className="text-base bg-none font-medium text-gray-700 hover:text-black hover:font-semibold">
-                <Link href="/login">Login</Link>
+                <Link href="/">Login</Link>
               </Button>
               <Button asChild className="bg-primary/90 hover:bg-primary hover:py-6 text-white rounded-xl text-sm font-semibold px-4 py-2">
-                <Link href="/get-started">Get Started</Link>
+                <Link href="/">Get Started</Link>
               </Button>
             </div>
           </div>
@@ -174,7 +174,7 @@ const Navbar = () => {
                 {dropdownData.product.items.map((item) => (
                   <Link
                     key={item.title}
-                    href={item.href}
+                    href="#"
                     className="flex items-center gap-3 text-gray-600"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -203,7 +203,7 @@ const Navbar = () => {
                 {dropdownData.resources.items.map((item) => (
                   <Link
                     key={item.title}
-                    href={item.href}
+                    href="/#"
                     className="flex items-center gap-3 text-gray-600"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -232,7 +232,7 @@ const Navbar = () => {
                 {dropdownData.support.items.map((item) => (
                   <Link
                     key={item.title}
-                    href={item.href}
+                    href="/#"
                     className="flex items-center gap-3 text-gray-600"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -253,7 +253,7 @@ const Navbar = () => {
             </Collapsible>
 
             <Link
-              href="/pricing"
+              href="/#"
               className="block text-lg text-black hover:font-semibold border-b border-gray-100 pb-4"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -274,7 +274,7 @@ const Navbar = () => {
             <div className="pt-4 flex flex-col gap-2">
 
               <Button asChild className="bg-primary w-fit text-white rounded-lg text-base font-medium ">
-                <Link href="/get-started" onClick={() => setIsMenuOpen(false)}>Get Started</Link>
+                <Link href="/#" onClick={() => setIsMenuOpen(false)}>Get Started</Link>
               </Button>
             </div>
           </div>

@@ -3,10 +3,55 @@
 import Image from "next/image";
 import { swiperImages } from "../../../../public/assets/swiper";
 import OscillatingSwiper from "./swiper/OscillatingSwiper";
+import { useEffect, useState } from "react";
 
 export default function SwipesSection() {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovering, setIsHovering] = useState(false);
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+            setMousePosition({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            });
+        };
+
+        const section = document.getElementById('performance-section');
+        if (section) {
+            section.addEventListener('mousemove', handleMouseMove);
+            section.addEventListener('mouseenter', () => setIsHovering(true));
+            section.addEventListener('mouseleave', () => setIsHovering(false));
+        }
+
+        return () => {
+            if (section) {
+                section.removeEventListener('mousemove', handleMouseMove);
+                section.removeEventListener('mouseenter', () => setIsHovering(true));
+                section.removeEventListener('mouseleave', () => setIsHovering(false));
+            }
+        };
+    }, []);
+
     return (
-        <section className="w-full bg-black flex flex-col items-center sm:items-end">
+        <section className="w-full bg-black flex flex-col items-center sm:items-end py-10">
+            <div
+                className="absolute pointer-events-none"
+                style={{
+                    background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px,
+                       rgba(141, 131, 255, 0.3), 
+                        rgba(121, 109, 247, 0.15) 40%,
+                        transparent 70%)`,
+                    width: '100%',
+                    height: '100%',
+                    top: 0,
+                    left: 0,
+                    mixBlendMode: 'screen',
+                    transition: isHovering ? 'none' : 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+            />
+
             <div className="w-full max-w-[1600px] pt-10 pb-4">
 
                 <Image
@@ -46,7 +91,7 @@ export default function SwipesSection() {
                                 swiperImages.swipe1_4,
 
                             ]}
-                            oscillationDuration={10}
+                            oscillationDuration={5}
                             startingDelay={0}
                         />
                     </div>
@@ -61,7 +106,7 @@ export default function SwipesSection() {
                                 swiperImages.swipe2_4,
                                 swiperImages.swipe2_5
                             ]}
-                            oscillationDuration={12}
+                            oscillationDuration={5}
                             startingDelay={2}
                         />
                     </div>
@@ -77,8 +122,8 @@ export default function SwipesSection() {
                                 swiperImages.swipe3_5,
                                 swiperImages.swipe3_6
                             ]}
-                            oscillationDuration={14}
-                            startingDelay={4}
+                            oscillationDuration={5}
+                            startingDelay={3}
                         />
                     </div>
                 </div>
