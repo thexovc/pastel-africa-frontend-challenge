@@ -10,6 +10,7 @@ const Create: React.FC = () => {
   const componentRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(headingRef, { once: true, amount: 0.3 });
   const lastScrollPosition = useRef(0);
+  const exitThresholdReached = useRef(false);
 
   const defaultIndex = 2;
   const maxIndex = 5;
@@ -17,25 +18,20 @@ const Create: React.FC = () => {
   const [isComponentActive, setIsComponentActive] = useState(false);
   const isAnimating = useRef(false);
 
-  // Add opacity controls
   const [contentOpacity, setContentOpacity] = useState(1);
   const [orOpacity, setOrOpacity] = useState(0);
   const [sliderOpacity, setSliderOpacity] = useState(1);
 
-  // Handle opacity transitions based on currentIndex and component visibility
   useEffect(() => {
     if (currentIndex === maxIndex) {
-      // Fade out content (h1 and info) and fade in "Or"
       setContentOpacity(0);
       setOrOpacity(1);
     } else {
-      // Reset opacities when not at maxIndex
       setContentOpacity(1);
       setOrOpacity(0);
     }
   }, [currentIndex]);
 
-  // Handle slider visibility based on component being in view
   useEffect(() => {
     if (!isComponentActive && currentIndex === maxIndex) {
       setSliderOpacity(0);
@@ -44,39 +40,24 @@ const Create: React.FC = () => {
     }
   }, [isComponentActive, currentIndex]);
 
-  // Handle both wheel and touch/scrollbar scrolling
   const handleScroll = (delta: number) => {
     if (!isComponentActive || isAnimating.current) return;
 
-    // Scrolling down
+    const scrollThreshold = 20;
+    if (Math.abs(delta) < scrollThreshold) return;
+
     if (delta > 0 && currentIndex < maxIndex) {
       isAnimating.current = true;
-
-      const animate = setInterval(() => {
-        setCurrentIndex((prev) => {
-          if (prev >= maxIndex) {
-            clearInterval(animate);
-            isAnimating.current = false;
-            return prev;
-          }
-          return prev + 1;
-        });
-      }, 100);
-    }
-    // Scrolling up
-    else if (delta < 0 && currentIndex > defaultIndex) {
+      setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
+      setTimeout(() => {
+        isAnimating.current = false;
+      }, 500);
+    } else if (delta < 0 && currentIndex > defaultIndex) {
       isAnimating.current = true;
-
-      const animate = setInterval(() => {
-        setCurrentIndex((prev) => {
-          if (prev <= defaultIndex) {
-            clearInterval(animate);
-            isAnimating.current = false;
-            return prev;
-          }
-          return prev - 1;
-        });
-      }, 100);
+      setCurrentIndex(prev => Math.max(prev - 1, defaultIndex));
+      setTimeout(() => {
+        isAnimating.current = false;
+      }, 500);
     }
   };
 
@@ -86,9 +67,15 @@ const Create: React.FC = () => {
         setIsComponentActive(entry.isIntersecting);
         if (entry.isIntersecting) {
           lastScrollPosition.current = window.scrollY;
+        } else {
+          setCurrentIndex(defaultIndex);
+          setContentOpacity(1);
+          setOrOpacity(0);
+          setSliderOpacity(1);
+          isAnimating.current = false;
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     if (componentRef.current) {
@@ -99,20 +86,25 @@ const Create: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Mouse wheel handler
+    exitThresholdReached.current = currentIndex === maxIndex;
+  }, [currentIndex]);
+
+  useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (!isComponentActive || isAnimating.current) return;
-      if (
-        currentIndex > defaultIndex ||
-        (currentIndex === defaultIndex && e.deltaY > 0)
-      ) {
+
+      const shouldIntercept =
+        (currentIndex > defaultIndex || (currentIndex === defaultIndex && e.deltaY > 0)) &&
+        !exitThresholdReached.current;
+
+      if (shouldIntercept) {
         e.preventDefault();
         handleScroll(e.deltaY);
       }
     };
 
-    // Touch handlers
     let touchStartY = 0;
+
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
     };
@@ -121,32 +113,33 @@ const Create: React.FC = () => {
       if (!isComponentActive || isAnimating.current) return;
       const touchDelta = touchStartY - e.touches[0].clientY;
 
-      if (
-        currentIndex > defaultIndex ||
-        (currentIndex === defaultIndex && touchDelta > 0)
-      ) {
+      const shouldIntercept =
+        (currentIndex > defaultIndex || (currentIndex === defaultIndex && touchDelta > 0)) &&
+        !exitThresholdReached.current;
+
+      if (shouldIntercept) {
         e.preventDefault();
         handleScroll(touchDelta);
         touchStartY = e.touches[0].clientY;
       }
     };
 
-    // Scrollbar/general scroll handler
     const handleScrollbar = () => {
       if (!isComponentActive || isAnimating.current) return;
       const currentScroll = window.scrollY;
       const delta = currentScroll - lastScrollPosition.current;
 
-      if (
-        currentIndex > defaultIndex ||
-        (currentIndex === defaultIndex && delta > 0)
-      ) {
+      const shouldIntercept =
+        (currentIndex > defaultIndex || (currentIndex === defaultIndex && delta > 0)) &&
+        !exitThresholdReached.current;
+
+      if (shouldIntercept) {
         handleScroll(delta);
       }
+
       lastScrollPosition.current = currentScroll;
     };
 
-    // Add event listeners
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
     window.addEventListener("touchmove", handleTouchMove, { passive: false });
@@ -161,11 +154,15 @@ const Create: React.FC = () => {
   }, [isComponentActive, currentIndex]);
 
   return (
-    <div className="w-full bg-black flex flex-col items-center sm:items-start"
+    <div
+      className="w-full min-h-screen bg-black flex flex-col items-center sm:items-start"
       ref={componentRef}
-      style={{ backgroundColor: orOpacity === 1 ? "black" : "transparent" }}
+      style={{
+        backgroundColor: orOpacity === 1 ? "black" : "transparent",
+        scrollSnapAlign: "start",
+      }}
     >
-      <div className="max-w-[1600px] mx-auto w-full flex flex-col lg:flex-row pt-8 xs:pt-12 sm:pt-20">
+      <div className="max-w-[1600px] mx-auto w-full flex flex-col lg:flex-row pt-8 xs:pt-12 sm:pt-20 px-4 sm:px-6 lg:px-8">
         <motion.div
           className="w-full relative"
           animate={{ opacity: contentOpacity }}

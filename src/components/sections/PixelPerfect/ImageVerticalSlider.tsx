@@ -63,10 +63,10 @@ const VerticalVariedSlider: React.FC<Props> = ({
 
   useEffect(() => {
     if (!isTransitioning) {
-      const targetY = (currentIndex - defaultIndex) * -140;
+      const targetY = (currentIndex - defaultIndex) * (windowWidth < 640 ? -100 : -140); // Adjust spacing for mobile
       springY.set(targetY);
     }
-  }, [currentIndex, springY, defaultIndex, isTransitioning]);
+  }, [currentIndex, springY, defaultIndex, isTransitioning, windowWidth]);
 
   const handleSlideClick = (index: number) => {
     if (index >= defaultIndex && !isTransitioning) {
@@ -82,14 +82,46 @@ const VerticalVariedSlider: React.FC<Props> = ({
 
   if (!isMounted) return null;
 
+  // Update base sizes for better mobile responsiveness
+  const baseSizes = {
+    active: {
+      mobile: 180,    // Reduced from 220
+      tablet: 250,    // Medium for tablet
+      desktop: 190    // Original desktop size
+    },
+    previous: {
+      mobile: 130,    // Reduced from 160
+      tablet: 180,
+      desktop: 140
+    },
+    distant: {
+      mobile: 80,     // Reduced from 100
+      tablet: 120,
+      desktop: 90
+    },
+    default: {
+      mobile: 50,     // Reduced from 60
+      tablet: 70,
+      desktop: 80
+    }
+  };
+
+  // Update size calculation based on screen size
+  const getSize = (type: keyof typeof baseSizes) => {
+    if (windowWidth < 640) return baseSizes[type].mobile;
+    if (windowWidth < 1024) return baseSizes[type].tablet;
+    return baseSizes[type].desktop;
+  };
+
   return (
     <div
       ref={containerRef}
-      className="flex gap-4 items-center h-fit bg-transparent overflow-hidden"
+      className="flex flex-col lg:flex-row gap-4 items-center h-fit bg-transparent overflow-hidden w-full"
+      style={{ minHeight: windowWidth < 640 ? '60vh' : 'auto' }} // Add minimum height for mobile
     >
-      <div className="w-[50%] relative flex flex-col items-center">
+      <div className="w-full lg:w-[50%] relative flex flex-col items-center">
         <motion.div
-          className="flex flex-col items-center"
+          className="flex flex-col items-center w-full"
           style={{ y: springY }}
         >
           <AnimatePresence mode="wait">
@@ -97,32 +129,24 @@ const VerticalVariedSlider: React.FC<Props> = ({
               const position = index - currentIndex;
               const absPos = Math.abs(position);
 
-              // Base sizes
-              const baseSizes = {
-                active: isMobile ? 280 : 190,
-                previous: isMobile ? 200 : 140,
-                distant: isMobile ? 140 : 90,
-                default: 80
-              };
-
               // Calculate width and opacity
-              let width = baseSizes.default;
+              let width = getSize('default');
               let opacity = 0.4;
 
               if (absPos === 0) {
-                width = baseSizes.active;
+                width = getSize('active');
                 opacity = 1;
               } else if (absPos === 1 && index > currentIndex) {
-                width = baseSizes.previous;
+                width = getSize('previous');
                 opacity = 0.8;
               } else if (absPos === 2 && index > currentIndex) {
-                width = baseSizes.distant;
+                width = getSize('distant');
                 opacity = 0.6;
               }
 
               // Special cases for slides before defaultIndex
               if (currentIndex <= defaultIndex && index < defaultIndex) {
-                width = index === defaultIndex - 1 ? baseSizes.previous : baseSizes.distant;
+                width = index === defaultIndex - 1 ? getSize('previous') : getSize('distant');
                 opacity = index === defaultIndex - 1 ? 0.8 : 0.6;
               }
 
@@ -132,7 +156,7 @@ const VerticalVariedSlider: React.FC<Props> = ({
               return (
                 <motion.div
                   key={slide.id}
-                  className="relative"
+                  className="relative w-full flex justify-center"
                   layout
                 >
                   {absPos === 0 && index >= defaultIndex && (
@@ -191,7 +215,7 @@ const VerticalVariedSlider: React.FC<Props> = ({
             })}
           </AnimatePresence>
           <motion.h1
-            className="text-[150px] font-600"
+            className="text-[80px] sm:text-[100px] lg:text-[150px] font-600"
             animate={{ opacity: orOpacity }}
             transition={{ duration: 0.5 }}
           >
@@ -200,7 +224,7 @@ const VerticalVariedSlider: React.FC<Props> = ({
         </motion.div>
       </div>
       <motion.div
-        className="w-[50%] max-lg:hidden mt-20"
+        className="w-full lg:w-[50%] max-lg:hidden mt-20"
         animate={{ opacity: 1 - orOpacity }}
         transition={{ duration: 0.5 }}
       >
@@ -211,4 +235,8 @@ const VerticalVariedSlider: React.FC<Props> = ({
 };
 
 export default VerticalVariedSlider;
+
+
+
+
 
