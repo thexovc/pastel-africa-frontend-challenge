@@ -5,6 +5,7 @@ import Hero from '@/components/sections/Hero/Hero'
 import PerformanceSection from '@/components/sections/PerformanceSection/PerformanceSection'
 import Create from '@/components/sections/PixelPerfect/Create'
 import SwipesSection from '@/components/sections/PixelPerfect/SwipesSection'
+import ScaleBusiness from '@/components/sections/ScaleBusiness/scaleBusiness'
 import ThirdPartyDependencies from '@/components/sections/ThirdPartyDependencies/ThirdPartyDependencies'
 import { CraftfeaturesData } from '@/utils/data/craft-feature.data'
 import { DesignfeaturesData } from '@/utils/data/design-feature.data'
@@ -28,6 +29,8 @@ export default function Home() {
         />
 
       </div>
+
+      <ScaleBusiness />
 
       <Create />
       <SwipesSection />
