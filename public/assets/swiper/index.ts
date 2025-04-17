@@ -16,6 +16,8 @@ import swipe3_4 from "./swipe3_4.webp";
 import swipe3_5 from "./swipe3_5.webp";
 import swipe3_6 from "./swipe3_6.webp";
 
+import rocket from "./rocket.svg";
+
 export const swiperImages = {
   swipe1_1,
   swipe1_2,
@@ -34,4 +36,6 @@ export const swiperImages = {
   swipe3_4,
   swipe3_5,
   swipe3_6,
+
+  rocket,
 };

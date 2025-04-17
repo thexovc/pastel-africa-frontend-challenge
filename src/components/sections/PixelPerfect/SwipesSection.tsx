@@ -4,54 +4,135 @@ import Image from "next/image";
 import { swiperImages } from "../../../../public/assets/swiper";
 import OscillatingSwiper from "./swiper/OscillatingSwiper";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function SwipesSection() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
+    const [globalPosition, setGlobalPosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+        // Create the effect element that will be positioned fixed on the screen
+        const effectElement = document.createElement("div");
+        effectElement.id = "jumpstart-mouse-effect";
+        effectElement.style.position = "fixed";
+        effectElement.style.pointerEvents = "none";
+        effectElement.style.width = "800px";
+        effectElement.style.height = "800px";
+        effectElement.style.borderRadius = "50%";
+        effectElement.style.background = `radial-gradient(circle at center,
+        rgba(99, 82, 255, 0.4),
+        rgba(82, 67, 255, 0.2) 40%,
+        rgba(71, 56, 255, 0.1) 60%,
+        transparent 80%)`;
+        effectElement.style.transform = "translate(-50%, -50%)";
+        effectElement.style.mixBlendMode = "screen";
+        effectElement.style.opacity = "0";
+        effectElement.style.transition = "opacity 0.2s ease";
+        effectElement.style.zIndex = "9999";
+        document.body.appendChild(effectElement);
+
+        const handleGlobalMouseMove = (e: MouseEvent) => {
+            const section = document.getElementById("jumpstart-section");
+            if (!section) return;
+
+            const rect = section.getBoundingClientRect();
+
+            // Check if mouse is over the swiper
+            const swiperColumn = document.querySelector(".swiper-column");
+            if (swiperColumn) {
+                const swiperRect = swiperColumn.getBoundingClientRect();
+                if (
+                    e.clientX >= swiperRect.left &&
+                    e.clientX <= swiperRect.right &&
+                    e.clientY >= swiperRect.top &&
+                    e.clientY <= swiperRect.bottom
+                ) {
+                    return;
+                }
+            }
+
+            // Calculate distance from component bounds
+            const distanceFromTop = e.clientY - rect.top;
+            const distanceFromBottom = rect.bottom - e.clientY;
+            const distanceFromLeft = e.clientX - rect.left;
+            const distanceFromRight = rect.right - e.clientX;
+
+            // Define how far away from the component the effect should still be visible
+            const effectRange = 200; // pixels
+
+            // Check if mouse is within the component or within range
+            const isWithinComponent =
+                distanceFromTop > 0 &&
+                distanceFromBottom > 0 &&
+                distanceFromLeft > 0 &&
+                distanceFromRight > 0;
+
+            const isWithinRange =
+                distanceFromTop > -effectRange &&
+                distanceFromBottom > -effectRange &&
+                distanceFromLeft > -effectRange &&
+                distanceFromRight > -effectRange;
+
+            // Store current visibility state
+            const shouldBeVisible = isWithinComponent || isWithinRange;
+            setIsVisible(shouldBeVisible);
+
+            // Update the effect element
+            const effect = document.getElementById("jumpstart-mouse-effect");
+            if (effect) {
+                effect.style.opacity = shouldBeVisible ? "1" : "0";
+                effect.style.left = `${e.clientX}px`;
+                effect.style.top = `${e.clientY}px`;
+            }
+
+            // Update relative position for component rendering
             setMousePosition({
                 x: e.clientX - rect.left,
-                y: e.clientY - rect.top
+                y: e.clientY - rect.top,
+            });
+
+            // Update global position
+            setGlobalPosition({
+                x: e.clientX,
+                y: e.clientY,
             });
         };
 
-        const section = document.getElementById('performance-section');
-        if (section) {
-            section.addEventListener('mousemove', handleMouseMove);
-            section.addEventListener('mouseenter', () => setIsHovering(true));
-            section.addEventListener('mouseleave', () => setIsHovering(false));
-        }
+        // Add global mouse move listener
+        document.addEventListener("mousemove", handleGlobalMouseMove);
 
         return () => {
-            if (section) {
-                section.removeEventListener('mousemove', handleMouseMove);
-                section.removeEventListener('mouseenter', () => setIsHovering(true));
-                section.removeEventListener('mouseleave', () => setIsHovering(false));
+            document.removeEventListener("mousemove", handleGlobalMouseMove);
+            // Clean up the effect element when component unmounts
+            const effect = document.getElementById("jumpstart-mouse-effect");
+            if (effect && effect.parentNode) {
+                effect.parentNode.removeChild(effect);
             }
         };
     }, []);
 
+
     return (
-        <section className="w-full bg-black flex flex-col items-center sm:items-end py-10">
-            <div
+        <motion.div
+            id="jumpstart-section"
+            style={{
+                position: "relative",
+                overflow: "visible",
+                backgroundColor: "#000000",
+            }}
+            className="w-full bg-black flex flex-col items-center sm:items-end py-10">
+            {/* We'll keep this div for compatibility but we won't use it for the effect */}
+            <motion.div
                 className="absolute pointer-events-none"
                 style={{
-                    background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px,
-                       rgba(141, 131, 255, 0.3), 
-                        rgba(121, 109, 247, 0.15) 40%,
-                        transparent 70%)`,
-                    width: '100%',
-                    height: '100%',
+                    width: "100%",
+                    height: "100%",
                     top: 0,
                     left: 0,
-                    mixBlendMode: 'screen',
-                    transition: isHovering ? 'none' : 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    opacity: 0,
                 }}
             />
-
             <div className="w-full max-w-[1600px] pt-10 pb-4">
 
                 <Image
@@ -129,7 +210,7 @@ export default function SwipesSection() {
                 </div>
 
             </div>
-        </section>
+        </motion.div>
 
 
     );
