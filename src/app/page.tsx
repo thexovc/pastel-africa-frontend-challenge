@@ -7,8 +7,8 @@ import Create from '@/components/sections/PixelPerfect/Create'
 import SwipesSection from '@/components/sections/PixelPerfect/SwipesSection'
 import ScaleBusiness from '@/components/sections/ScaleBusiness/scaleBusiness'
 import ThirdPartyDependencies from '@/components/sections/ThirdPartyDependencies/ThirdPartyDependencies'
-import { CraftfeaturesData } from '@/utils/data/craft-feature.data'
-import { DesignfeaturesData } from '@/utils/data/design-feature.data'
+import { CraftfeaturesData } from '@/constants/data/craft-feature.data'
+import { DesignfeaturesData } from '@/constants/data/design-feature.data'
 
 export default function Home() {
   return (

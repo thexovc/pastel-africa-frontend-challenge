@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { scaleBusinessContentCards } from "@/utils/data/scale-business.data";
+import { scaleBusinessContentCards } from "@/constants/data/scale-business.data";
 import ScaleBusinesContentCard from "./cards/scaleBusinessContentCards";
 
 const ScaleBusiness = () => {

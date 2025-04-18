@@ -1,5 +1,5 @@
 import { scaleBusinessImages } from "../../../public/assets/scaleBusiness";
-import { ScaleBusinessContentCardProps } from "../types";
+import { ScaleBusinessContentCardProps } from "../../utils/types";
 
 export const scaleBusinessContentCards: (ScaleBusinessContentCardProps & {
   id: number;

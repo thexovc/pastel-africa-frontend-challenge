@@ -1,4 +1,4 @@
-import { Feature } from "../types";
+import { Feature } from "../../utils/types";
 
 export const CraftfeaturesData: Feature[] = [
   {
