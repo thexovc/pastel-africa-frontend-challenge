@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     <div className={`w-full bg-white z-50 fixed top-0 transition-transform duration-300 ease-in-out ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
-      <div className="w-full max-w-[1600px] mx-auto px-6">
+      <div className="w-full max-w-[1200px] mx-auto px-6">
         <nav className="flex items-center justify-between h-[72px]">
 
           {/* Logo */}

@@ -13,7 +13,7 @@ import { DesignfeaturesData } from '@/constants/data/design-feature.data'
 export default function Home() {
   return (
     <main className='w-full'>
-      <div className='mx-auto max-w-[1600px] px-6 '>
+      <div className='mx-auto max-w-[1200px] px-6 '>
         <Hero />
         <Features
           title="Design pixel-perfect sites"
@@ -35,14 +35,14 @@ export default function Home() {
       <Create />
       <SwipesSection />
 
-      <div className='mx-auto max-w-[1600px] px-6 '>
+      <div className='mx-auto max-w-[1200px] px-6 '>
 
         <ThirdPartyDependencies />
       </div>
 
       <PerformanceSection />
 
-      <div className='mx-auto max-w-[1600px] px-6 '>
+      <div className='mx-auto max-w-[1200px] px-6 '>
 
         <AppIntegration />
         <Design />

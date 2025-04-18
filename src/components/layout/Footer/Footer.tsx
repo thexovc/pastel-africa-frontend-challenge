@@ -70,7 +70,7 @@ const footerData = {
 const Footer = () => {
     return (
         <footer className="w-full border-gray-200 bg-[#F5F5F7]">
-            <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="flex flex-col md:flex-row gap-8">
                     {/* Social Column - Hidden on mobile, shown first on desktop */}
                     <div className="hidden md:block md:w-[200px]">

@@ -52,7 +52,7 @@ const PerformanceSection: React.FC = () => {
                 }}
             />
 
-            <div className="container mx-auto px-4 max-w-[1600px] relative z-10">
+            <div className="container mx-auto px-4 max-w-[1200px] relative z-10">
                 {/* Heading */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold text-white mx-auto">

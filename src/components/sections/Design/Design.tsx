@@ -99,7 +99,7 @@ const Design: React.FC = () => {
 
     return (
         <section className="w-full">
-            <div className="w-full max-w-[1600px] mx-auto pt-32 pb-20">
+            <div className="w-full max-w-[1200px] mx-auto pt-32 pb-20">
 
                 <AnimateHeader
                     title={

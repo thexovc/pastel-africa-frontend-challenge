@@ -133,7 +133,7 @@ export default function SwipesSection() {
                     opacity: 0,
                 }}
             />
-            <div className="w-full max-w-[1600px] pt-10 pb-4">
+            <div className="w-full max-w-[1200px] pt-10 pb-4">
 
                 <Image
                     src="/assets/swiper/rocket.svg"
@@ -144,7 +144,7 @@ export default function SwipesSection() {
                 />
             </div>
 
-            <div className="w-full max-w-[1600px] grid grid-cols-1 md:grid-cols-[1fr_3fr] items-start justify-start px-4 gap-y-4 md:gap-y-0">
+            <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[1fr_3fr] items-start justify-start px-4 gap-y-4 md:gap-y-0">
                 {/* Header */}
                 <div className="max-w-sm w-full md:mx-0 md:text-left space-y-4">
                     <div className="flex flex-col items-start gap-3 mb-4">

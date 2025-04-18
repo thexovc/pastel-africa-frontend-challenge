@@ -246,7 +246,7 @@ const Create: React.FC = () => {
       ref={componentRef}
       style={{ backgroundColor: orOpacity === 1 ? "black" : "transparent" }}
     >
-      <div className="max-w-[1600px] mx-auto px-4 flex flex-col lg:flex-row pt-16 xs:pt-20 lg:pt-32">
+      <div className="max-w-[1200px] mx-auto px-4 flex flex-col lg:flex-row pt-16 xs:pt-20 lg:pt-32">
         <motion.div
           className="w-full md:w-[50%] relative"
           animate={{ opacity: contentOpacity }}
