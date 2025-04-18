@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import Image from 'next/image'
+import { Feature } from '@/utils/types'
 
 type FeaturesProps = {
   title: string

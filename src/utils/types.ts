@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 
-type Feature = {
+export type Feature = {
   id: number;
   title: string;
   description: string;
