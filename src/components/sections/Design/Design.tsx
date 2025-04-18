@@ -205,12 +205,12 @@ const Design: React.FC = () => {
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#331e7c] to-black"></div>
+                    <div className="absolute inset-0 bg-[#1f1b2d]"></div>
                     {/* Mouse following gradient - always present using the last mouse position */}
                     <div
                         className="absolute pointer-events-none"
                         style={{
-                            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px,
+                            background: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px,
                         rgba(81, 69, 247, 0.8),
                         rgba(51, 39, 147, 0.4) 40%,
                         transparent 70%)`,
