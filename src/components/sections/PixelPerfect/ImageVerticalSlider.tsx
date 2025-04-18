@@ -188,7 +188,7 @@ const ImageVerticalSlider: React.FC<Props> = ({
             );
           })}
           <motion.h1
-            className={`max-lg:hidden text-[150px] font-600 ${orOpacity === 1 ? "text-white" : "text-black"
+            className={`max-lg:hidden text-[120px] font-600 ${orOpacity === 1 ? "text-white" : "text-black"
               }`}
             animate={{ opacity: orOpacity }}
             transition={{ duration: (animationDuration * 0.5) / 1000 }}

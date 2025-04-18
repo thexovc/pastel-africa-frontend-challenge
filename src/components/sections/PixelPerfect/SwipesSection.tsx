@@ -1,10 +1,10 @@
 "use client"
 
 import Image from "next/image";
-import { swiperImages } from "../../../../public/assets/swiper";
-import OscillatingSwiper from "./swiper/OscillatingSwiper";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import OscillatingSwiper from "./swiper/OscillatingSwiper";
+import { swiperImages } from "../../../../public/assets/swiper";
 
 export default function SwipesSection() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -122,6 +122,34 @@ export default function SwipesSection() {
                 backgroundColor: "#000000",
             }}
             className="w-full bg-black flex flex-col items-center sm:items-end py-10">
+
+            <div className="container flex justify-end relative z-[1001] px-4 sm:px-20">
+                <div className="flex flex-col items-start gap-10">
+                    {/* "Or" */}
+                    <motion.h1
+                        className="text-[6rem] sm:text-[8rem] lg:text-[10rem] xl:text-[120px] font-semibold text-white leading-none"
+                        transition={{ duration: 0.5 }}
+                    >
+                        Or
+                    </motion.h1>
+
+                    {/* Supporting text */}
+                    <h1
+                        className="text-white text-[2rem] 2xs:text-[2.4rem] xs:text-[2.5rem] sm:text-[2.8rem] lg:text-[3rem] xl:text-[3.2rem] font-medium leading-tight"
+                        style={{
+                            letterSpacing: "-0.03em",
+                            position: "relative",
+                            zIndex: 2,
+                        }}
+                    >
+                        Jumpstart your business with <br className="hidden sm:block" />
+                        beautifully crafted <br className="hidden sm:block" />
+                        themes and sections
+                    </h1>
+                </div>
+            </div>
+
+
             {/* We'll keep this div for compatibility but we won't use it for the effect */}
             <motion.div
                 className="absolute pointer-events-none"
@@ -133,7 +161,8 @@ export default function SwipesSection() {
                     opacity: 0,
                 }}
             />
-            <div className="w-full max-w-[1200px] pt-10 pb-4">
+
+            <div className="w-full max-w-[1400px] pt-10 pb-4">
 
                 <Image
                     src="/assets/swiper/rocket.svg"
@@ -144,7 +173,7 @@ export default function SwipesSection() {
                 />
             </div>
 
-            <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[1fr_3fr] items-start justify-start px-4 gap-y-4 md:gap-y-0">
+            <div className="w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-[1fr_3fr] items-start justify-start px-4 gap-y-4 md:gap-y-0">
                 {/* Header */}
                 <div className="max-w-sm w-full md:mx-0 md:text-left space-y-4">
                     <div className="flex flex-col items-start gap-3 mb-4">
